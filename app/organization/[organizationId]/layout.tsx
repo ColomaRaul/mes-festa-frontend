@@ -1,8 +1,11 @@
 'use client';
 
 import React from "react";
-import {Tab, Tabs} from "@nextui-org/react";
+import {Link} from "@nextui-org/link";
+import {Button} from "@nextui-org/button";
+import {DiscordIcon, UserIcon} from "@/components/icons";
 import {usePathname} from "next/navigation";
+import {siteConfig} from "@/config/site";
 
 export default function OrganizationLayout({children, params}: {
     children: React.ReactNode,
@@ -11,18 +14,25 @@ export default function OrganizationLayout({children, params}: {
     }
 }) {
     const pathname = usePathname();
+
     return (
-        <div>
-            <Tabs aria-label="Options" selectedKey={pathname}>
-                <Tab key={`/organization/${params.organizationId}/home`} title="Home" href={`/organization/${params.organizationId}/home`}/>
-                <Tab key={`/organization/${params.organizationId}/personal-page`} title="Personal Page" href={`/organization/${params.organizationId}/personal-page`}/>
-                <Tab key={`/organization/${params.organizationId}/notifications`} title="Notifications" href={`/organization/${params.organizationId}/notifications`}/>
-                <Tab key={`/organization/${params.organizationId}/transactions`} title="Transactions" href={`/organization/${params.organizationId}/transactions`}/>
-                <Tab key={`/organization/${params.organizationId}/documentation`} title="Documentation" href={`/organization/${params.organizationId}/documentation`}/>
-                <Tab key={`/organization/${params.organizationId}/assistance`} title="Assistance" href={`/organization/${params.organizationId}/assistance`}/>
-                <Tab key={`/organization/${params.organizationId}/calendar`} title="Calendar" href={`/organization/${params.organizationId}/calendar`}/>
-            </Tabs>
-            {children}
-        </div>
+        <section className={'grid grid-cols-12'}>
+            <div className={'col-span-2'}>
+                <ul>
+                    {siteConfig.organizationNavItems.map((item) => {
+                        let replacedUrl = item.path.replace('organizationId', params.organizationId);
+                        return (
+                            <li key={item.path}>
+                                <Link href={replacedUrl} className={`flex flex-row space-x-4 items-center p-2 rounded-lg hover:bg-zinc-100 ${
+                                    replacedUrl === pathname ? 'bg-zinc-100' : ''}`}>
+                                    <span className={'font-semibold text-xl flex'}>{item.title}</span>
+                                </Link>
+                            </li>
+                        )
+                    })}
+                </ul>
+            </div>
+            <div className={'col-span-10'}>{children}</div>
+        </section>
     )
 }

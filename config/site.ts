@@ -66,4 +66,34 @@ export const siteConfig = {
 		discord: "https://discord.gg/9b6yyZKmH4",
     sponsor: "https://patreon.com/jrgarciadev"
 	},
+	organizationNavItems: [
+		{
+			title: 'Home',
+			path: `/organization/organizationId/home`
+		},
+		{
+			title: 'Pàgina personal',
+			path: `/organization/organizationId/personal-page`
+		},
+		{
+			title: 'Notificacions',
+			path: `/organization/organizationId/notifications`
+		},
+		{
+			title: 'Compters',
+			path: `/organization/organizationId/transactions`
+		},
+		{
+			title: 'Documents',
+			path: `/organization/organizationId/documentation`
+		},
+		{
+			title: 'Assistència',
+			path: `/organization/organizationId/assistance`
+		},
+		{
+			title: 'Calendari',
+			path: `/organization/organizationId/calendar`
+		}
+	]
 };
