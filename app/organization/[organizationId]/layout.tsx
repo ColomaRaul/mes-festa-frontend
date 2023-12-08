@@ -6,6 +6,7 @@ import {Button} from "@nextui-org/button";
 import {DiscordIcon, UserIcon} from "@/components/icons";
 import {usePathname} from "next/navigation";
 import {siteConfig} from "@/config/site";
+import {Spacer} from "@nextui-org/react";
 
 export default function OrganizationLayout({children, params}: {
     children: React.ReactNode,
@@ -32,7 +33,8 @@ export default function OrganizationLayout({children, params}: {
                     })}
                 </ul>
             </div>
-            <div className={'col-span-10'}>{children}</div>
+            <div className={'col-span-1'}></div>
+            <div className={'col-span-9'}>{children}</div>
         </section>
     )
 }

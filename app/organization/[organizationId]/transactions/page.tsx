@@ -1,8 +1,20 @@
 'use client'
 
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {getAllLoggedUserTransactions} from "@/lib/api/backend-api";
 import {useSession} from "next-auth/react";
+import {
+    Table,
+    TableHeader,
+    TableColumn,
+    TableBody,
+    TableRow,
+    TableCell,
+    getKeyValue,
+    Chip,
+    Spacer
+} from "@nextui-org/react";
+
 
 export default function TransactionsPage({ params }: { params: { organizationId: string } }) {
     const [profitData, setProfitData] = useState([]);
@@ -27,16 +39,88 @@ export default function TransactionsPage({ params }: { params: { organizationId:
         fetchData();
     }, [session]);
 
-    return (
-        <main>
-            <div>
-                <h1>Ingresos</h1>
-                <div>
-                </div>
-                <h1>Despeses</h1>
-                <div>
+    const renderRow = React.useCallback((transaction: any, columnKey: React.Key) => {
+        const cellValue = transaction[columnKey as keyof any];
+
+        switch (columnKey) {
+            case 'date':
+                let formattedStringDate = new Date(cellValue as string);
+                let options: Intl.DateTimeFormatOptions = { year: 'numeric', month: '2-digit', day: '2-digit' };
+                let formattedDate = new Intl.DateTimeFormat('es-ES', options).format(formattedStringDate);
+
+                return <div>{formattedDate}</div>;
+            case 'amount':
+                // @ts-ignore
+                let amount = cellValue / 100;
+                // @ts-ignore
+                let formattedAmount: string = amount as string;
+
+                // @ts-ignore
+                return formattedAmount.toLocaleString('es-ES', { style: 'currency', currency: 'EUR' });
+            default:
+                return cellValue;
+        }
+    }, [])
+
+    const topContentProfit = () => {
+        return (
+            <div className="flex flex-col gap-4">
+                <div className="flex justify-between gap-3 items-end">
+                    <Chip>Ingressos</Chip>
                 </div>
             </div>
-        </main>
+        )
+    }
+
+    const topContentExpense = () => {
+        return (
+            <div className="flex flex-col gap-4">
+                <div className="flex justify-between gap-3 items-end">
+                    <Chip>Despesses</Chip>
+                </div>
+            </div>
+        )
+    }
+
+    return (
+        <div>
+            <div>
+                <Table aria-label={'Ingressos'}
+                       topContent={topContentProfit()}
+                >
+                    <TableHeader>
+                        <TableColumn key={'date'}>Data</TableColumn>
+                        <TableColumn key={'typeFinancial'}>Concepte</TableColumn>
+                        <TableColumn key={'amount'}>Quantitat</TableColumn>
+                    </TableHeader>
+                    <TableBody items={profitData} emptyContent={'Not transactions found'}>
+                        {(item: any) => (
+                            <TableRow key={item.id}>
+                                {(columnKey) => <TableCell>{renderRow(item, columnKey)}</TableCell>}
+                            </TableRow>
+                        )}
+                    </TableBody>
+                </Table>
+            </div>
+            <Spacer y={5}/>
+            <div>
+                <Table aria-label={'Despeses'}
+                       topContent={topContentExpense()}
+                >
+                    <TableHeader>
+                        <TableColumn key={'date'}>Data</TableColumn>
+                        <TableColumn key={'typeFinancial'}>Concepte</TableColumn>
+                        <TableColumn key={'amount'}>Quantitat</TableColumn>
+                    </TableHeader>
+                    <TableBody items={expenseData} emptyContent={'Not transactions found'}>
+                        {(item: any) => (
+                            <TableRow key={item.id}>
+                                {(columnKey) => <TableCell>{renderRow(item, columnKey)}</TableCell>}
+                            </TableRow>
+                        )}
+                    </TableBody>
+                </Table>
+            </div>
+        </div>
     )
 }
