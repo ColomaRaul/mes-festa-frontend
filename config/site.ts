@@ -70,11 +70,6 @@ export const siteConfig = {
 	},
 	organizationNavItems: [
 		{
-			id: 'home',
-			title: 'Home',
-			path: `/organization/organizationId/home`
-		},
-		{
 			id: 'personal_page',
 			title: 'Pàgina personal',
 			path: `/organization/organizationId/personal-page`

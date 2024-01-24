@@ -27,6 +27,8 @@ export default function OrganizationHomePage({ params }: { params: { organizatio
                             startContent={iconsOrganization[item.id]}
                             href={replacedUrl}
                             as={Link}
+                            radius={'full'}
+                            className={'px-unit-6 min-w-unit-24 h-unit-48 text-4xl gap-unit-3 rounded-large'}
                         >
                             {item.title}
                         </Button>
