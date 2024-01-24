@@ -18,7 +18,7 @@ export default function Home() {
 					Consulta els dinerets que tens guardat
 				</h2>
 				<h2 className={subtitle({ class: "mt-4" })}>
-					a la teua filada o barraca
+					a la teua filà o barraca
 				</h2>
 			</div>
 

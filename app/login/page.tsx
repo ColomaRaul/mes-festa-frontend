@@ -15,7 +15,6 @@ export default function LoginPage() {
     const [password, setPassword] = useState<string>("Abc123");
     const [isVisible, setIsVisible] = useState(false);
     const toggleVisibility = () => setIsVisible(!isVisible);
-
     const router = useRouter();
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {

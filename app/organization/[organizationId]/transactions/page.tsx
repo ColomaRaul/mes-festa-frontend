@@ -89,9 +89,9 @@ export default function TransactionsPage({ params }: { params: { organizationId:
                        topContent={topContentProfit()}
                 >
                     <TableHeader>
-                        <TableColumn key={'date'}>Data</TableColumn>
-                        <TableColumn key={'typeFinancial'}>Concepte</TableColumn>
-                        <TableColumn key={'amount'}>Quantitat</TableColumn>
+                        <TableColumn key={'date'} width={15}>Data</TableColumn>
+                        <TableColumn key={'typeFinancial'} width={300}>Concepte</TableColumn>
+                        <TableColumn key={'amount'} width={30}>Quantitat</TableColumn>
                     </TableHeader>
                     <TableBody items={profitData} emptyContent={'Not transactions found'}>
                         {(item: any) => (
@@ -108,9 +108,9 @@ export default function TransactionsPage({ params }: { params: { organizationId:
                        topContent={topContentExpense()}
                 >
                     <TableHeader>
-                        <TableColumn key={'date'}>Data</TableColumn>
-                        <TableColumn key={'typeFinancial'}>Concepte</TableColumn>
-                        <TableColumn key={'amount'}>Quantitat</TableColumn>
+                        <TableColumn key={'date'} width={15}>Data</TableColumn>
+                        <TableColumn key={'typeFinancial'} width={300}>Concepte</TableColumn>
+                        <TableColumn key={'amount'} width={30}>Quantitat</TableColumn>
                     </TableHeader>
                     <TableBody items={expenseData} emptyContent={'Not transactions found'}>
                         {(item: any) => (

@@ -1,3 +1,5 @@
+import { HomeIcon} from "@/components/icons";
+
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
@@ -68,30 +70,37 @@ export const siteConfig = {
 	},
 	organizationNavItems: [
 		{
+			id: 'home',
 			title: 'Home',
 			path: `/organization/organizationId/home`
 		},
 		{
+			id: 'personal_page',
 			title: 'Pàgina personal',
 			path: `/organization/organizationId/personal-page`
 		},
 		{
+			id: 'notifications',
 			title: 'Notificacions',
 			path: `/organization/organizationId/notifications`
 		},
 		{
+			id: 'transactions',
 			title: 'Compters',
 			path: `/organization/organizationId/transactions`
 		},
 		{
+			id: 'documentation',
 			title: 'Documents',
 			path: `/organization/organizationId/documentation`
 		},
 		{
+			id: 'assistance',
 			title: 'Assistència',
 			path: `/organization/organizationId/assistance`
 		},
 		{
+			id: 'calendar',
 			title: 'Calendari',
 			path: `/organization/organizationId/calendar`
 		}

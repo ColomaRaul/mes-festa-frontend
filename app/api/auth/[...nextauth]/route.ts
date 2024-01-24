@@ -1,6 +1,7 @@
 import NextAuth, {SessionStrategy} from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import {ApiUserLogin} from "@/lib/api/backend-api";
+import { encode, decode } from 'next-auth/jwt';
 
 const handler = NextAuth({
     providers: [
@@ -36,7 +37,8 @@ const handler = NextAuth({
     session: {
         strategy: "jwt" as SessionStrategy,
         maxAge: 60 * 60 * 2
-    }
+    },
+    jwt: {encode, decode}
 })
 
 export { handler as GET, handler as POST}
