@@ -14,7 +14,6 @@ export default function OrganizationHomePage({ params }: { params: { organizatio
     // //TODO make a search to get organization data information
     // organizationContext.addOrganizationName('Kabilenyos');
     const {data: session, status} = useSession();
-    const pathname = usePathname();
 
     if (session?.user) {
         return (

@@ -1,10 +1,9 @@
 'use client'
 
-import {getAllLoggedUserOrganization} from "@/lib/api/backend-api";
 import {useSession} from "next-auth/react";
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 import {useRouter} from "next/navigation";
-import {siteConfig} from "@/config/site";
+import {getDefaultOrganizationByUser} from "@/components/load-organization";
 
 export default function OrganizationPage() {
     const {data: session, status} = useSession();
@@ -14,9 +13,9 @@ export default function OrganizationPage() {
         const fetchData = async () => {
             try {
                 if (session) {
-                    const allLoggedUserOrganization = await getAllLoggedUserOrganization(session?.user?.access_token);
-                    if (allLoggedUserOrganization.length > 0) {
-                        router.push(`/organization/${allLoggedUserOrganization[0].organization_id}/home`)
+                    const defaultOrganization = await getDefaultOrganizationByUser(session.user.access_token);
+                    if (defaultOrganization) {
+                        router.push(`/organization/${defaultOrganization.organization_id}/home`)
                     }
                 }
             } catch (error) {
