@@ -3,7 +3,7 @@
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
-import Header from "@/components/header";
+import MainLogo from "@/components/main-logo";
 import {Input} from "@nextui-org/input";
 import {Button} from "@nextui-org/button";
 import {EyeFilledIcon, EyeSlashFilledIcon} from "@/components/icons";
@@ -38,7 +38,7 @@ export default function LoginPage() {
     return (
         <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
             <div className="inline-block max-w-lg text-center justify-center">
-                <Header/>
+                <MainLogo/>
                 <form onSubmit={handleSubmit}>
                     <Input
                         type="email"
