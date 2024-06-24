@@ -20,4 +20,8 @@ interface UserOrganizationData {
     userOrganization_updated_at: string;
 }
 
-export type { Characteristic, UserOrganizationData }
+interface HealthData {
+    message: string;
+}
+
+export type { Characteristic, UserOrganizationData, HealthData }

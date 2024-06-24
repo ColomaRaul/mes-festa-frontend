@@ -38,3 +38,15 @@ npm run dev
 ## License
 
 Licensed under the [MIT license](https://github.com/nextui-org/next-app-template/blob/main/LICENSE).
+
+# RUN LOCALHOST WITH DOCKER
+
+For launch
+```shell
+make start
+```
+
+For stop
+```shell
+make stop
+```

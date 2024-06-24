@@ -1,0 +1,15 @@
+services:
+  nextjs_frontend:
+    container_name: mes_festa_frontend_node
+    build:
+      context: ..
+      dockerfile: .docker/node/Dockerfile
+    volumes:
+      - ../:/usr/src/app
+    ports:
+      - "${NEXT_PUBLIC_PORT}:${NEXT_PUBLIC_PORT}"
+    networks:
+      - mes_festa_frontend_network
+
+networks:
+  mes_festa_frontend_network:

@@ -59,3 +59,12 @@ export async function getAllLoggedUserOrganization(accessToken: string): Promise
 
     return await response.json();
 }
+
+export async function health() {
+    const response = await fetch(`${apiUrl}/health`, {
+        method: 'GET',
+        headers: headers,
+    })
+
+    return await response.json();
+}
