@@ -50,3 +50,12 @@ For stop
 ```shell
 make stop
 ```
+
+# RUN LOCALHOST
+Check are installed node
+
+Then run the following command:
+
+```shell
+make dev
+```

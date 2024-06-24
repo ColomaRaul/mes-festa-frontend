@@ -9,7 +9,7 @@ services:
     ports:
       - "${NEXT_PUBLIC_PORT}:${NEXT_PUBLIC_PORT}"
     networks:
-      - mes_festa_frontend_network
+      - mes_festa_network
 
 networks:
-  mes_festa_frontend_network:
+  mes_festa_network:

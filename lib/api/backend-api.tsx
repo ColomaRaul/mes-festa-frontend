@@ -12,6 +12,8 @@ const headers: HeadersType = {
 
 export async function ApiUserLogin(email: string, password: string) {
     try {
+        console.log(`API URL: ${apiUrl}/user/login`);
+
         const response = await fetch(`${apiUrl}/user/login`, {
             method: 'POST',
             headers: headers,
@@ -21,6 +23,9 @@ export async function ApiUserLogin(email: string, password: string) {
                 'password': password,
             })
         })
+        
+        console.log('LLEGA DESPUES DEL FETCH');
+        console.log(`Response: ${JSON.stringify(response)}`);
 
         const json = await response.json();
 
@@ -34,6 +39,7 @@ export async function ApiUserLogin(email: string, password: string) {
 
         return json;
     } catch (error) {
+        console.log(error);
         return {message: 'Failed to fetch API', status: 401};
     }
 }
@@ -61,6 +67,7 @@ export async function getAllLoggedUserOrganization(accessToken: string): Promise
 }
 
 export async function health() {
+    console.log(`API URL: ${apiUrl}/health`);
     const response = await fetch(`${apiUrl}/health`, {
         method: 'GET',
         headers: headers,
