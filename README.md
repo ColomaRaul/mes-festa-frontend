@@ -59,3 +59,10 @@ Then run the following command:
 ```shell
 make dev
 ```
+
+## Install  NEXT UI components
+
+For install Next Ui component, for example, button component
+```shell
+npm install @nextui-org/button
+```
